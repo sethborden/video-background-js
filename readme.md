@@ -8,3 +8,25 @@ video background to a full webpage, include the following snippet in your
 ```javascript
 $('body').videoBackground('<path to your video file>');
 ```
+
+Checkout `vidtest.html` for and example.
+
+You can also call `vidoeBackground` with a settings object to control autoplay,
+whether you want the video muted, whether it loops, etc.
+
+```javascript
+var settings = {autoplay: 'autoplay',
+                muted: 'muted',
+                loop: 'loop',
+                fit: 'fill', //changes the object-fit property of the video
+                src: <url to vido> //
+               }
+
+$('body').videoBackground(, settings);
+```
+
+Keep in mind that videos, while smaller than their .gif equivalents are still
+big.  Mobile users, impatient customers, people in Australia, and others may
+hate you for putting a moving background on your site...but it has it's place.
+
+
