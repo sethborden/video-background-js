@@ -25,6 +25,8 @@ var settings = {autoplay: 'autoplay',
 $('body').videoBackground(, settings);
 ```
 
+Works great with Chrome, kind of works with IE, and resize doesn't look to be working on Firefox.
+
 Keep in mind that videos, while smaller than their .gif equivalents are still
 big.  Mobile users, impatient customers, people in Australia, and others may
 hate you for putting a moving background on your site...but it has it's place.
