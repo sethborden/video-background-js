@@ -1,39 +1,29 @@
 (function ($) {
     //add the videBackground function to the jQuery library
     $.fn.videoBackground = function(video, options) {
-        //check and see if options were passed
-        var settings = options ? options : {
-            autoplay: 'autoplay',
-            muted: 'muted',
-            loop: 'loop',
-            fit: 'fill',
-            src: video,
-        };
+        var that = this;
+        if(typeof options === 'undefined') options = {};
 
-        //because closures
-        var el = this;
+        //check and see if options were passed
+        var settings = {};
+        settings.autoplay = options.autoplay ? options.autoplay : 'autoplay';
+        settings.muted = options.muted ? options.muted : 'muted';
+        settings.loop = options.loop ? options.loop : 'loop';
+        settings.fit = options.fit ? options.fit : 'fill';
+        settings.src = options.src ? options.src : video;
 
         //append a video tag to the target element
-        var $vid = $('<video>');
-        $vid.attr('autoplay', settings.autoplay);
-        $vid.attr('muted', settings.muted);
-        $vid.attr('loop', settings.loop);
-        $vid.attr('src', settings.src);
-        $vid.css('height', '100%');
-        $vid.css('width', '100%');
-        $vid.css('object-fit', settings.fit);
-        $vid.css('overflow', 'hidden');
-        $vid.css('object-position', 'center center');
-        el.append($vid);
+        that.append($('<video>')
+            .attr({'autoplay': settings.autoplay, 'muted': settings.muted, 'loop': settings.loop, 'src': settings.src})
+            .css({'height': '100%', 'width': '100%', 'object-fit': settings.fit, 'overflow': 'hidden', 'position': 'absolute'}));
 
         //sets the initial video size
-        resizeVideo(el);
+        resizeVideo(that);
 
         //updates the sizing as the window size changes
         $(window).on('resize', function(e) {
-            el.css('width', '100%');
-            el.css('height', '100%');
-            resizeVideo(el);
+            that.css({'width': '100%', 'height': '100%'});
+            resizeVideo(that);
         });
 
         //function to adjust the video size as needed

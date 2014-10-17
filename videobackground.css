@@ -23,15 +23,19 @@ body {
 }
 
 #textbox {
-  background: rgba(200,200,200, .8);
   color: white;
+  font-family: calibri;
+  overflow: auto;
+  z-index: 11000;
+}
+
+#other {
+  background: rgba(200,200,200, .8);
   border: 3px solid #aaaaaa;
   width: 40%;
   height: 40%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 200px;
-  font-family: calibri;
-  overflow: auto;
 }
 
